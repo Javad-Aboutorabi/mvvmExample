@@ -1,23 +1,13 @@
 package com.example.mvvmexample.adapters
 
-//for Context
 import android.content.Context
-//for RecyclerView
 import androidx.recyclerview.widget.RecyclerView
-//For view
 import android.view.View
-//For ViewGroup
 import android.view.ViewGroup
-//For LayoutInflater
 import android.view.LayoutInflater
-import android.widget.Button
 import android.widget.ImageButton
-//For Toast popup
 import android.widget.Toast
-//For TextView
 import android.widget.TextView
-
-//For Resource
 import com.example.mvvmexample.R
 import com.example.mvvmexample.viewmodels.MainViewModel
 import com.example.mvvmexample.models.NicePlace
@@ -27,12 +17,12 @@ class RecyclerAdapter(val viewModel: MainViewModel, val arrayList: ArrayList<Nic
         parent: ViewGroup,
         viewType: Int,
     ): RecyclerAdapter.NotesViewHolder {
-        var root = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
+        val root = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
         return NotesViewHolder(root)
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.NotesViewHolder, position: Int) {
-        holder.bind(arrayList.get(position))
+        holder.bind(arrayList[position])
     }
 
     override fun getItemCount(): Int {
