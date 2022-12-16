@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var viewManager = LinearLayoutManager(this)
     private lateinit var viewModel: MainViewModel
     private lateinit var mainrecycler: RecyclerView
-    private lateinit var but: Button
+    private lateinit var submitButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         val application = requireNotNull(this).application
         val factory = MainViewModelFactory()
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        but = findViewById(R.id.button)
-        but.setOnClickListener {
+        submitButton = findViewById(R.id.button)
+        submitButton.setOnClickListener {
             addData()
         }
 
@@ -39,10 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialiseAdapter() {
         mainrecycler.layoutManager = viewManager
-        observeData()
-    }
-
-    private fun observeData() {
         viewModel.lst.observe(this, Observer {
             Log.i("data", it.toString())
             mainrecycler.adapter = RecyclerAdapter(viewModel, it, this)
@@ -60,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             val blog = NicePlace(title, "ff")
             viewModel.add(blog)
             textPlace.text.clear()
-            mainrecycler.adapter?.notifyDataSetChanged()
+//            mainrecycler.adapter?.notifyDataSetChanged()
         }
 
     }
