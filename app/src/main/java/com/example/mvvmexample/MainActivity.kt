@@ -1,5 +1,6 @@
 package com.example.mvvmexample
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 //For resource
 import com.example.mvvmexample.viewmodels.MainViewModel
-import com.example.mvvmexample.viewmodels.MainViewModelFactory
 import com.example.mvvmexample.models.NicePlace
 import com.example.mvvmexample.adapters.RecyclerAdapter
+import com.example.mvvmexample.viewmodels.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private var viewManager = LinearLayoutManager(this)
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         mainrecycler = findViewById(R.id.recycler)
         val application = requireNotNull(this).application
         val factory = MainViewModelFactory()
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         but = findViewById(R.id.button)
         but.setOnClickListener {
             addData()
@@ -35,28 +36,30 @@ class MainActivity : AppCompatActivity() {
 
         initialiseAdapter()
     }
-    private fun initialiseAdapter(){
+
+    private fun initialiseAdapter() {
         mainrecycler.layoutManager = viewManager
         observeData()
     }
 
-    fun observeData(){
-        viewModel.lst.observe(this, Observer{
-            Log.i("data",it.toString())
-            mainrecycler.adapter= RecyclerAdapter(viewModel, it, this)
+    private fun observeData() {
+        viewModel.lst.observe(this, Observer {
+            Log.i("data", it.toString())
+            mainrecycler.adapter = RecyclerAdapter(viewModel, it, this)
         })
     }
 
 
-    fun addData(){
-        var txtplce = findViewById<EditText>(R.id.titletxt)
-        var title=txtplce.text.toString()
-        if(title.isNullOrBlank()){
-            Toast.makeText(this,"Enter value!",Toast.LENGTH_LONG).show()
-        }else{
-            var blog= NicePlace(title, "ff")
+    @SuppressLint("NotifyDataSetChanged")
+    fun addData() {
+        val textPlace = findViewById<EditText>(R.id.titletxt)
+        val title = textPlace.text.toString()
+        if (title.isNullOrBlank()) {
+            Toast.makeText(this, "Enter value!", Toast.LENGTH_LONG).show()
+        } else {
+            val blog = NicePlace(title, "ff")
             viewModel.add(blog)
-            txtplce.text.clear()
+            textPlace.text.clear()
             mainrecycler.adapter?.notifyDataSetChanged()
         }
 

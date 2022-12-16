@@ -1,23 +1,27 @@
 package com.example.mvvmexample.adapters
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.LayoutInflater
 import android.widget.ImageButton
-import android.widget.Toast
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmexample.R
-import com.example.mvvmexample.viewmodels.MainViewModel
 import com.example.mvvmexample.models.NicePlace
+import com.example.mvvmexample.viewmodels.MainViewModel
 
-class RecyclerAdapter(val viewModel: MainViewModel, val arrayList: ArrayList<NicePlace>, val context: Context): RecyclerView.Adapter<RecyclerAdapter.NotesViewHolder>() {
+class RecyclerAdapter(
+    val viewModel: MainViewModel,
+    val arrayList: ArrayList<NicePlace>,
+    private val context: Context
+) : RecyclerView.Adapter<RecyclerAdapter.NotesViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
     ): RecyclerAdapter.NotesViewHolder {
-        val root = LayoutInflater.from(parent.context).inflate(R.layout.item,parent,false)
+        val root = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
         return NotesViewHolder(root)
     }
 
@@ -26,17 +30,15 @@ class RecyclerAdapter(val viewModel: MainViewModel, val arrayList: ArrayList<Nic
     }
 
     override fun getItemCount(): Int {
-        if(arrayList.size==0){
-            Toast.makeText(context,"List is empty",Toast.LENGTH_LONG).show()
-        }else{
-
+        if (arrayList.size == 0) {
+            Toast.makeText(context, "List is empty", Toast.LENGTH_LONG).show()
         }
         return arrayList.size
     }
 
 
-    inner  class NotesViewHolder(private val binding: View) : RecyclerView.ViewHolder(binding) {
-        fun bind(blog: NicePlace){
+    inner class NotesViewHolder(private val binding: View) : RecyclerView.ViewHolder(binding) {
+        fun bind(blog: NicePlace) {
             binding.findViewById<TextView>(R.id.title).text = blog.title
             binding.findViewById<ImageButton>(R.id.delete).setOnClickListener {
                 viewModel.remove(blog)
