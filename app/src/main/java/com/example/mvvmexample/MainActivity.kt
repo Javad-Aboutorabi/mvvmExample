@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 //For resource
 import com.example.mvvmexample.viewmodels.MainViewModel
 import com.example.mvvmexample.models.NicePlace
@@ -49,15 +50,10 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     fun addData() {
         val textPlace = findViewById<EditText>(R.id.titletxt)
-        val title = textPlace.text.toString()
-        if (title.isNullOrBlank()) {
-            Toast.makeText(this, "Enter value!", Toast.LENGTH_LONG).show()
-        } else {
-            val blog = NicePlace(title, "ff")
-            viewModel.add(blog)
-            textPlace.text.clear()
+        viewModel.add()
+        textPlace.text.clear()
 //            mainrecycler.adapter?.notifyDataSetChanged()
-        }
+
 
     }
 }
