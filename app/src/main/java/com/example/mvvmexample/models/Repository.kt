@@ -6,20 +6,13 @@ import kotlinx.coroutines.*
 import java.util.logging.Handler
 
 object Repository {
-    fun start(newList: ArrayList<NicePlace>, lst: MutableLiveData<ArrayList<NicePlace>>) {
 
-
-
-//        lifecycleScope.launch {
-//            myTextView.text = "Starting"
-//            delay(1000L)
-//            myTextView.text = "Processing"
-//            delay(2000L)
-//            myTextView.text = "Done"
-//        }
-
-        newList.add(NicePlace(getRandomString()))
-        lst.value = newList
+    suspend fun start(newList: ArrayList<NicePlace>, lst: MutableLiveData<ArrayList<NicePlace>>) {
+            for (i in 0..10) {
+                delay(500)
+                newList.add(NicePlace(getRandomString()))
+                lst.postValue(newList)
+            }
     }
 
     fun remove(newList: ArrayList<NicePlace>, lst: MutableLiveData<ArrayList<NicePlace>>,blog:NicePlace) {

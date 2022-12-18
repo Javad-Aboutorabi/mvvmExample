@@ -4,19 +4,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvmexample.models.NicePlace
 import com.example.mvvmexample.models.Repository
+import kotlinx.coroutines.*
 
 class MainViewModel : ViewModel() {
     var lst = MutableLiveData<ArrayList<NicePlace>>()
     var newlist = arrayListOf<NicePlace>()
 
     fun add() {
-//        for (i in 1..9) {
-//            Thread(Runnable {
-                Repository.start(newlist, lst)
-//                Thread.sleep(1000)
-//            })
-
+//        GlobalScope.launch {
+//
 //        }
+        CoroutineScope(Dispatchers.Main).launch {
+            Repository.start(newlist, lst)
+        }
     }
 
 
