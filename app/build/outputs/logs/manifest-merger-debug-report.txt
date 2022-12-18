@@ -49,6 +49,7 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.0-beta01] /home/javad/.gra
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/26f03e73ce5c0917cd4444fe0701ddaa/transformed/lifecycle-livedata-2.5.0-beta01/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/8a5625983bd4a4025e972ccca7c318df/transformed/lifecycle-livedata-core-ktx-2.5.0-beta01/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/b1822e52b3cf24067b384ab4068daae0/transformed/lifecycle-livedata-core-2.5.0-beta01/AndroidManifest.xml:17:1-24:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /home/javad/.gradle/caches/transforms-3/ce23a8515716bd2a7f83cd9600347774/transformed/rxandroid-2.1.1/AndroidManifest.xml:15:1-20:12
 MERGED from [androidx.compose.ui:ui-util:1.0.1] /home/javad/.gradle/caches/transforms-3/683f086563c7c03c1ad1c7ac10a99d8c/transformed/ui-util-1.0.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /home/javad/.gradle/caches/transforms-3/cc9e3fe5c47ada6024af5e0d8fa335e5/transformed/sqlite-framework-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.sqlite:sqlite:2.0.1] /home/javad/.gradle/caches/transforms-3/9e87bf6909eb45f5c779dcdb9e35a4c3/transformed/sqlite-2.0.1/AndroidManifest.xml:17:1-22:12
@@ -223,6 +224,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0-beta01] /home/
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/8a5625983bd4a4025e972ccca7c318df/transformed/lifecycle-livedata-core-ktx-2.5.0-beta01/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/b1822e52b3cf24067b384ab4068daae0/transformed/lifecycle-livedata-core-2.5.0-beta01/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.0-beta01] /home/javad/.gradle/caches/transforms-3/b1822e52b3cf24067b384ab4068daae0/transformed/lifecycle-livedata-core-2.5.0-beta01/AndroidManifest.xml:20:5-22:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /home/javad/.gradle/caches/transforms-3/ce23a8515716bd2a7f83cd9600347774/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /home/javad/.gradle/caches/transforms-3/ce23a8515716bd2a7f83cd9600347774/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
 MERGED from [androidx.compose.ui:ui-util:1.0.1] /home/javad/.gradle/caches/transforms-3/683f086563c7c03c1ad1c7ac10a99d8c/transformed/ui-util-1.0.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.compose.ui:ui-util:1.0.1] /home/javad/.gradle/caches/transforms-3/683f086563c7c03c1ad1c7ac10a99d8c/transformed/ui-util-1.0.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.0.1] /home/javad/.gradle/caches/transforms-3/cc9e3fe5c47ada6024af5e0d8fa335e5/transformed/sqlite-framework-2.0.1/AndroidManifest.xml:20:5-44
