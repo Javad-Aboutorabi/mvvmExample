@@ -18,10 +18,16 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id button
 id delete
+id id
+id linearLayoutCompat
+id name
+id open_save_activity
 id recycler
+id save
 id title
 id titletxt
 layout activity_main
+layout activity_save
 layout item
 mipmap ic_launcher
 mipmap ic_launcher_round

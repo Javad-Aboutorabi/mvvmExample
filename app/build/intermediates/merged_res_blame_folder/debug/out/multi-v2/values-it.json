@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/javad/androidProject/mvvmExample/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
+            "outputFile": "/home/javad/AndroidStudioProjects/MVVMExampleGit/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
             "map": [
                 {
                     "source": "/home/javad/.gradle/caches/transforms-3/5ec14a04d3ba236a63e3a55e0e9a5145/transformed/ui-1.0.1/res/values-it/values-it.xml",
