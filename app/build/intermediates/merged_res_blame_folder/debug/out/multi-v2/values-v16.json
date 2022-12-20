@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/javad/AndroidStudioProjects/MVVMExampleGit/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/home/javad/androidProject/mvvmExample/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/javad/.gradle/caches/transforms-3/a7227bed05e11b9daa73287d3bf3505d/transformed/appcompat-1.3.0/res/values-v16/values-v16.xml",
+                    "source": "/home/javad/.gradle/caches/transforms-3/d14404a1b7e8cff33128fbe57ee67445/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/javad/.gradle/caches/transforms-3/ec8778f597115131b77fc5968136215d/transformed/core-1.7.0/res/values-v16/values-v16.xml",
+                    "source": "/home/javad/.gradle/caches/transforms-3/43d06d1391ac76c6373163b197ab7417/transformed/core-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
