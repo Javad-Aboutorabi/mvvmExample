@@ -9,27 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Button
 import android.widget.EditText
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DiffUtil
 import com.example.mvvmexample.R
 import com.example.mvvmexample.WordsApplication
 //For resource
-import com.example.mvvmexample.viewmodels.MainViewModel
-import com.example.mvvmexample.adapters.RecyclerAdapter
 import com.example.mvvmexample.adapters.WordListAdapter
 import com.example.mvvmexample.models.Word
 import com.example.mvvmexample.viewmodels.WordViewModel
 import com.example.mvvmexample.viewmodels.WordViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    private var viewManager = LinearLayoutManager(this)
-    private lateinit var viewModel: MainViewModel
-    private lateinit var mainrecycler: RecyclerView
-
-
     private lateinit var submitButton: Button
     private val newWordActivityRequestCode = 1
     private val wordViewModel: WordViewModel by viewModels {
@@ -40,35 +36,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val recyclerView = findViewById<RecyclerView>(R.id.recycler)
         val adapter = WordListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
-
-
-//        mainrecycler = findViewById(R.id.recycler)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         submitButton = findViewById(R.id.button)
         val openSaveActivity = findViewById<Button>(R.id.open_save_activity)
         submitButton.setOnClickListener {
-            addData()
+            addData(adapter)
+
         }
         openSaveActivity.setOnClickListener {
             val intent = Intent(this@MainActivity, SaveActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
-        initialiseAdapter()
-
-
-
-        wordViewModel.allWords.observe(this) { words ->
-            // Update the cached copy of the words in the adapter.
-            words.let { adapter.submitList(it) }
-        }
-
 
     }
 
@@ -84,35 +65,63 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 applicationContext,
-               "empty_not_saved",
+                "empty_not_saved",
                 Toast.LENGTH_LONG
             ).show()
         }
     }
 
-    private fun initialiseAdapter() {
-
-
-
-
-
-
-
-//        mainrecycler.layoutManager = viewManager
-//        viewModel.lst.observe(this, Observer {
-//            Log.i("data", it.toString())
-//            mainrecycler.adapter = RecyclerAdapter(viewModel, it, this)
-//        })
-    }
-
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addData() {
-        val textPlace = findViewById<EditText>(R.id.titletxt)
-        viewModel.add()
-        textPlace.text.clear()
-//            mainrecycler.adapter?.notifyDataSetChanged()
+    fun addData(adapter: WordListAdapter) {
+        wordViewModel.allWords.observe(this) { words ->
+            val list = ArrayList<Word>()
+//            words.let {
 
 
+            CoroutineScope(Dispatchers.Main).launch {
+                words.forEach {
+                    list.add(it)
+                    delay(1000)
+
+                    adapter.submitList(list)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+
+
+/*            words.forEach {
+                if (list.size == 2)
+                    return@observe
+                CoroutineScope(Dispatchers.IO).launch {
+                    delay(1000)
+                    list.add(it)
+                    println("javad       " + it.word + "   " + list.size)
+
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(1000)
+                        adapter.submitList(list)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            }*/
+        }
+    }
+
+    class CoursesCallback(private val oldList: List<Word>, private val newList: List<Word>) :
+        DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+
+        override fun getNewListSize(): Int = newList.size
+
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            TODO("Not yet implemented")
+        }
     }
 }
